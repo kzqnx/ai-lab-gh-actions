@@ -32,7 +32,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Train Model & Generate Reports
-        run: python src/model.py  # This generates assets/confusion_matrix.png and metrics.txt
+        run: python src/model.py  # Use relative path
 
       - name: Ensure docs directory exists
         run: mkdir -p docs
@@ -50,6 +50,5 @@ jobs:
           commit_message: "Deploy updated reports to GitHub Pages"
           branch: main
           file_pattern: docs/**
-          push_options: '--force'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Ensure default token is used
